@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
+            $table->date('date');
             $table->string('location');
-            
+            $table->integer('places');
+            $table->string('mode');
+            $table->string('statut');
+            $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,3 +34,5 @@ return new class extends Migration
         Schema::dropIfExists('events');
     }
 };
+
+
