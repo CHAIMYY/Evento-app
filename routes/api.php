@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Categorie;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +16,4 @@ use App\Models\Categorie;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
-
-Route::get('/test', function (){
-    return $categories = Categorie::all();;
-});
-
-
-Route::post('/create', function (Request $request){
-    return $request;
 });

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CategorieController extends Controller
 {
+
     public function view(){
         $categories = Categorie::all();
         return view('admin.categories', compact('categories'));
