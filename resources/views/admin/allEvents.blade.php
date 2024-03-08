@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="min-h-screen flex flex-col sm:flex-row bg-gray-100">
+    <div class="min-h-screen flex flex-col sm:flex-row bg-blue-100">
         @include('layouts.navigation')
         <!-- Content -->
         <div class="flex-grow p-4 bg-gray-200">

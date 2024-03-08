@@ -23,6 +23,8 @@ class RegisteredUserController extends Controller
         return view('auth.registerClient', ['role' => 'client']);
     }
 
+
+    
     public function createOrg(): View
     {
         return view('auth.registerOrganisateur', ['role' => 'organisateur']);
