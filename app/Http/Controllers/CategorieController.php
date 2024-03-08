@@ -7,28 +7,27 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryController extends Controller
+class CategorieController extends Controller
 {
-
     public function view(){
         $categories = Categorie::all();
-        return view('admin.categorie', compact('categories'));
+        return view('admin.categories', compact('categories'));
     }
 
     public function create(Request $request){
         try{
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'nom' => ['required','string','max:255'],
             ]);
-    
+
             $user = Auth::user();
-    
+
             Categorie::create([
-                'name' => $request->name,
+                'nom' => $request->nom,
                 'user_id' => $user->id,
             ]);
             return redirect()->route('categories');
-        } catch(\Exception $e) {
+        }catch(\Exception $e){
             dd($e->getMessage());
         }
     }
@@ -37,12 +36,12 @@ class CategoryController extends Controller
     {
         try {
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'nom' => ['required', 'string', 'max:255'],
             ]);
                 $oneCategorie = Categorie::findOrFail($request->categorieID);
     
             $oneCategorie->update([
-                'name' => $request->nom,
+                'nom' => $request->nom,
             ]);
     
             return redirect()->route('categories');

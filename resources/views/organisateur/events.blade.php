@@ -45,7 +45,7 @@
 
 
 
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -92,4 +92,69 @@
 </div>
 </div>
 </div>
-  @endsection
+  @endsection --}}
+
+  <!-- resources/views/events/create.blade.php -->
+
+<x-app-layout>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Créer un nouvel événement</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('events.store') }}">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="title">Titre</label>
+                                <input id="title" type="text" class="form-control" name="title" required autofocus>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" class="form-control" name="description" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input id="date" type="date" class="form-control" name="date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Lieu</label>
+                                <input id="location" type="text" class="form-control" name="location" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Catégorie</label>
+                                <select name="category_id"
+                                class=" text-gray-700 border rounded w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 py-2 px-3 focus:outline-none focus:ring
+                                focus:border-blue-300">
+                            @foreach ($categories as $categorie)
+                                <option value="{{ $categorie->id }}">
+                                    {{ $categorie->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="places">Nombre de places disponibles</label>
+                                <input id="places" type="number" class="form-control" name="places" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    Créer l'événement
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
